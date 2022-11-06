@@ -1,0 +1,56 @@
+---
+# Work in progress...
+
+version: "3.8"
+
+services:
+  db:
+    hostname: db
+    image: "postgres:15.0"
+    restart: unless-stopped
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_DB=${DB_NAME}
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+    volumes:
+      - pg-data:/var/lib/postgresql/data
+  redis:
+    image: "redis:7.0.9-alpine"
+    restart: always
+    ports:
+      - '6379:6379'
+    volumes:
+      - redis-data:/data
+  web:
+    hostname: "web"
+    build:
+      target: dev
+      context: .
+      dockerfile: ./django/Dockerfile
+      args:
+        DJANGO_ENV: development
+    volumes:
+      - .:/app
+      - django-locale:/app/locale
+      - django-static:/var/www/django/static
+      - django-media:/var/www/django/media
+    depends_on:
+      - db
+      - redis
+    env_file: ./config/.env
+    command: python -Wd manage.py runserver 0.0.0.0:8000
+    ports:
+      - "8000:8000"
+    expose:
+      - "8000"
+
+volumes:
+  pg-data:
+  redis-data:
+  django-static:
+  django-media:
+  django-locale:
+
+
