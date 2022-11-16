@@ -38,4 +38,4 @@ You have to add all these things yourself, according to your needs.
 
 ## About
 
-This template is inspired by [@sobolevn](https://github.com/sobolevn).
+This template is inspired by [wemake-django-template](https://github.com/wemake-services/wemake-django-template).
