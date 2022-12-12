@@ -19,7 +19,7 @@ No one forcing you to use any of these things, so if you don't need something th
 
 ## What is missing?
 
-You never know how your next project will looks like, so there are no:
+You never know how your next project will look like, so there are no:
 
 - Templates
 - Forms
