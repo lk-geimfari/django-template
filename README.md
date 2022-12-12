@@ -32,7 +32,7 @@ You have to add all these things yourself, according to your needs.
 ## Keeping things in order
 
 - Avoid duplication
-- Keep your bussines logic in `app_name/logic/`
+- Keep your business logic in `app_name/logic/`
 - Always format your code using `scripts/format.sh`
 
 
